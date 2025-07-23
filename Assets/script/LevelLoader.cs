@@ -1,85 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Node
-{
-    private int _x;
-    private int _y;
-    private Vector3 _pos;
-    public Node(int x , int y , Vector3 pos)
-    {
-        _x = x;
-        _y = y;
-        _pos = pos;
-    }
 
-    public int X => _x;
-    public int Y => _y;
-    public Vector3 Pos => _pos;
-}
-public class Grid
-{
-    private int _witdh;
-    private int _height;
-    private Node[,] _nodes;
-
-    public Grid(int width, int height)
-    {
-        _witdh = width;
-        _height = height;
-        
-    }
-    public void CreateGrid(Vector3 startPos, float nodeSize)
-    {
-        _nodes = new Node[_witdh, _height];
-        for (int x = 0; x < _witdh; x++)
-        {
-            for (int y = 0; y < _height; y++)
-            {
-                Vector3 pos = startPos + new Vector3(x * nodeSize, y * nodeSize, 0);
-                _nodes[x, y] = new Node(x, y, pos);
-            }
-        }
-    }
-
-    public Node GetNode(int x, int y)
-    {
-        if (x < 0 || x >= _witdh || y < 0 || y >= _height)
-        {
-            return null;
-        }
-        return _nodes[x, y];
-    }
-
-    public int Width => _witdh;
-    public int Height => _height;
-
-}
 
 public class LevelLoader :MonoBehaviour
 {
+    public CameraController _cameraCtrl;
     public TextAsset _levelJson;
+    public int levelId;
     public GameObject _blockPrefab;
-    public Transform _parent;
+    public GameObject _sawBaldePrefab;
+    public Transform _content;
+    private TextAsset[] _levelJsons;
     private void Start()
     {
-        LoadLevel(1); // demo
+        LoadLevel(levelId); // demo
     }
-
-    public void LoadLevel(int levelId)
+    public void Init(TextAsset[] levelJsons)
     {
-        string json = _levelJson.text;
-        LevelData levelData = new LevelData();
+        _levelJsons = levelJsons;
+    }
+    public LevelData LoadLevel(int levelId)
+    {
+        string json ;
+        if (_levelJsons != null)
+            json = _levelJsons[levelId].text;
+        else json = _levelJson.text;
+            LevelData levelData = new LevelData();
         levelData.FromJson(json);
         if (levelData.levelId != levelId)
         {
             Debug.LogError("Level ID mismatch");
-            return;
+            return null;
         }
         // Create grid
         Grid grid = new Grid(levelData.Width, levelData.Height); 
-        grid.CreateGrid(Vector3.zero, 1f); 
-
+        grid.CreateGrid(Vector3.zero, 1f);
+        _cameraCtrl.AdjustCameraSize(grid.Width, grid.Height);
+        //create saw blades
+        foreach (var sawBlade in levelData.sawBlades)
+        {
+            Node node = grid.GetNode((int)sawBlade.grid.x, (int)sawBlade.grid.y);
+            if (node == null) continue;
+            GameObject sawBladeObj = ObjectPooling.GetPool("SawBlade", _sawBaldePrefab);
+            sawBladeObj.transform.SetParent(_content);
+            sawBladeObj.transform.position = node.Pos;
+        }
         // create blocks
         foreach (var block in levelData.blocks)
         {
@@ -87,10 +53,12 @@ public class LevelLoader :MonoBehaviour
             if (node == null) continue;
 
             GameObject blockObj = ObjectPooling.GetPool("Block",_blockPrefab);
-            blockObj.transform.SetParent(_parent);
+            blockObj.transform.SetParent(_content);
             blockObj.transform.position = node.Pos;
-            BlockController blockCtrl = blockObj.GetComponent<BlockController>();
+            Block blockCtrl = blockObj.GetComponent<Block>();
             blockCtrl.Init(block);
         }
+
+        return levelData;
     }
 }

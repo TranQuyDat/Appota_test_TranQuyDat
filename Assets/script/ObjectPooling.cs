@@ -27,7 +27,7 @@ public class ObjectPooling
         return obj; //get fr listPool
     }
 
-    public static void DeActiveObj(GameObject obj, string key)
+    public static void ReleaseToPool(GameObject obj, string key)
     {
         obj.SetActive(false);
         _Pools[key].Add(obj);
