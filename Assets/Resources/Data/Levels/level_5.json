@@ -1,0 +1,105 @@
+{
+    "levelId": 5,
+    "Width": 4,
+    "Height": 4,
+    "blocks": [
+        {
+            "grid": {
+                "x": 1.0,
+                "y": 3.0
+            },
+            "UnlockCount": 0,
+            "dir": 2
+        },
+        {
+            "grid": {
+                "x": 0.0,
+                "y": 3.0
+            },
+            "UnlockCount": 0,
+            "dir": 3
+        },
+        {
+            "grid": {
+                "x": 2.0,
+                "y": 1.0
+            },
+            "UnlockCount": 0,
+            "dir": 1
+        },
+        {
+            "grid": {
+                "x": 1.0,
+                "y": 1.0
+            },
+            "UnlockCount": 0,
+            "dir": 2
+        },
+        {
+            "grid": {
+                "x": 3.0,
+                "y": 2.0
+            },
+            "UnlockCount": 0,
+            "dir": 0
+        },
+        {
+            "grid": {
+                "x": 2.0,
+                "y": 2.0
+            },
+            "UnlockCount": 0,
+            "dir": 2
+        },
+        {
+            "grid": {
+                "x": 3.0,
+                "y": 1.0
+            },
+            "UnlockCount": 0,
+            "dir": 3
+        },
+        {
+            "grid": {
+                "x": 2.0,
+                "y": 3.0
+            },
+            "UnlockCount": 0,
+            "dir": 1
+        },
+        {
+            "grid": {
+                "x": 3.0,
+                "y": 0.0
+            },
+            "UnlockCount": 0,
+            "dir": 2
+        },
+        {
+            "grid": {
+                "x": 2.0,
+                "y": 0.0
+            },
+            "UnlockCount": 0,
+            "dir": 2
+        },
+        {
+            "grid": {
+                "x": 0.0,
+                "y": 2.0
+            },
+            "UnlockCount": 0,
+            "dir": 2
+        },
+        {
+            "grid": {
+                "x": 1.0,
+                "y": 2.0
+            },
+            "UnlockCount": 0,
+            "dir": 0
+        }
+    ],
+    "sawBlades": [],
+    "moveCount": 18
+}
