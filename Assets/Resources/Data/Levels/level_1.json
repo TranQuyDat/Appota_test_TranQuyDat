@@ -5,11 +5,11 @@
     "blocks": [
         {
             "grid": {
-                "x": 0.0,
+                "x": 1.0,
                 "y": 1.0
             },
             "UnlockCount": 0,
-            "dir": 0
+            "dir": 3
         },
         {
             "grid": {
@@ -17,15 +17,15 @@
                 "y": 0.0
             },
             "UnlockCount": 0,
-            "dir": 0
+            "dir": 3
         },
         {
             "grid": {
-                "x": 1.0,
+                "x": 0.0,
                 "y": 1.0
             },
             "UnlockCount": 0,
-            "dir": 1
+            "dir": 0
         },
         {
             "grid": {

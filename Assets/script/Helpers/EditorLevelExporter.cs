@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -140,7 +141,7 @@ public class EditorLevelExporter : EditorWindow
                 dir = convertDir(cell.dir),
             };
 
-            cell.isEmptyBlock = false;
+            cells[cell.x,cell.y].isEmptyBlock = false;
             cellsEmpty.RemoveAt(randomcell);
             list.Add(b);
 
@@ -171,24 +172,56 @@ public class EditorLevelExporter : EditorWindow
                 cellsEmpty.Remove(other);
             }
         }
+
+        var visited = new HashSet<BlockCellData>();
+        var path = new List<BlockCellData>();
+        var current = b;
+
+        while (current != null && !visited.Contains(current))
+        {
+            visited.Add(current);
+            path.Add(current);
+
+            Vector2Int nextPos = current.NextPosition();
+            if (nextPos.x < 0 || nextPos.x >= width || nextPos.y < 0 || nextPos.y >= height)
+                break; // ra ngoài biên, không phải vòng
+
+            current = cells[nextPos.x, nextPos.y];
+        }
+
+        if (current != null && visited.Contains(current))
+        {
+            int randomIndex = UnityEngine.Random.Range(0, path.Count);
+            var cellToRemove = path[randomIndex];
+            cellsEmpty.Remove(cellToRemove);
+            cells[cellToRemove.x, cellToRemove.y].isEmptyBlock = false;
+            Debug.Log($"Loop detected — removed cell at {cellToRemove.x},{cellToRemove.y}");
+        }
+
     }
 
     //
     private SawBladeData[] GenerateSaws(int width, int height, int maxSaw)
     {
-        var cells = GetCellEmptyBlock();
-        int count = Mathf.Min(cells.Count / 2, maxSaw);
+        var cellsEmpty = GetCellEmptyBlock();
+        int count = Mathf.Min(cellsEmpty.Count / 2, maxSaw);
         var list = new List<SawBladeData>();
 
         for (int i = 0; i < count; i++)
         {
-            var c = cells[UnityEngine.Random.Range(0, cells.Count)];
+            if (cellsEmpty.Count == 0) break;
+
+            int index = UnityEngine.Random.Range(0, cellsEmpty.Count);
+            var c = cellsEmpty[index];
+
             list.Add(new SawBladeData { grid = c.gridindex });
-            cells.Remove(c); // tránh trùng
+            c.isEmptyBlock = false;
+            cellsEmpty.RemoveAt(index);
         }
 
         return list.ToArray();
     }
+
 
 
     public void SetUnlockCountFor(BlockData[] blocks)
@@ -201,7 +234,7 @@ public class EditorLevelExporter : EditorWindow
         {
             int ranid = UnityEngine.Random.Range(0, blocks.Length);
             BlockData b = blocks[ranid];
-            BlockCellData cell = cells[(int)b.grid.y, (int)b.grid.x]; // Lưu ý: y là dòng
+            BlockCellData cell = cells[(int)b.grid.x, (int)b.grid.y];
 
             if (cellsNearEmpty.Contains(cell) && cellsNearEmpty.Count > 1)
             {
@@ -299,17 +332,33 @@ public class EditorLevelExporter : EditorWindow
 
     public List<BlockCellData> GetCellEmptyBlock()
     {
-        return cells.Cast<BlockCellData>().Where(c => c.isEmptyBlock).ToList();
+        List < BlockCellData > list = new List<BlockCellData >();
+        foreach (var cell in cells)
+        {
+            if (cell.isEmptyBlock)
+            {
+                list.Add(cell);
+            }
+        }
+        return list;
     }
     public List<BlockCellData> GetCellNotEmptyBlock()
     {
-        return cells.Cast<BlockCellData>().Where(c => !c.isEmptyBlock).ToList();
+        List < BlockCellData > list = new List<BlockCellData >();
+        foreach (var cell in cells)
+        {
+            if (!cell.isEmptyBlock)
+            {
+                list.Add(cell);
+            }
+        }
+        return list;
     }
 }
 
 public class BlockCellData
 {
-    public bool isEmptyBlock = true;
+    public bool isEmptyBlock ;
     public int x;
     public int y;
     public Vector2 dir;
@@ -318,7 +367,8 @@ public class BlockCellData
     {
         this.x = x;
         this.y = y;
-        this.dir = dir;
+        this.dir = dir; 
+        isEmptyBlock = true;
     }
 
     public Vector2Int gridindex => new Vector2Int(x, y);
@@ -330,6 +380,13 @@ public class BlockCellData
             return null;
         return cells[next.x, next.y];
     }
+    public Vector2Int NextPosition()
+    {
+        int nextX = x + Mathf.RoundToInt(dir.x);
+        int nextY = y + Mathf.RoundToInt(dir.y);
+        return new Vector2Int(nextX, nextY);
+    }
+
 
     public bool IsCollisionWith(BlockCellData other)
     {
@@ -345,3 +402,4 @@ public class BlockCellData
     }
 
 }
+#endif

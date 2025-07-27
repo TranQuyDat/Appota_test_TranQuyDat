@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
         _uiManager = GetComponent<UIManager>();
         _levelManager = GetComponent<LevelManager>();
         Application.targetFrameRate = 60;
+        Screen.orientation = ScreenOrientation.Portrait;
     }
     private void Start()
     {

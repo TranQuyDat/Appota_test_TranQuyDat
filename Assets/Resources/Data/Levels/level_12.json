@@ -6,47 +6,15 @@
         {
             "grid": {
                 "x": 3.0,
-                "y": 4.0
-            },
-            "UnlockCount": 0,
-            "dir": 0
-        },
-        {
-            "grid": {
-                "x": 1.0,
-                "y": 2.0
-            },
-            "UnlockCount": 0,
-            "dir": 2
-        },
-        {
-            "grid": {
-                "x": 0.0,
-                "y": 4.0
+                "y": 3.0
             },
             "UnlockCount": 0,
             "dir": 3
         },
         {
             "grid": {
-                "x": 5.0,
-                "y": 3.0
-            },
-            "UnlockCount": 0,
-            "dir": 1
-        },
-        {
-            "grid": {
-                "x": 1.0,
-                "y": 0.0
-            },
-            "UnlockCount": 0,
-            "dir": 2
-        },
-        {
-            "grid": {
-                "x": 0.0,
-                "y": 3.0
+                "x": 2.0,
+                "y": 4.0
             },
             "UnlockCount": 0,
             "dir": 2
@@ -54,114 +22,122 @@
         {
             "grid": {
                 "x": 3.0,
-                "y": 3.0
+                "y": 4.0
             },
             "UnlockCount": 0,
             "dir": 3
         },
         {
             "grid": {
-                "x": 2.0,
+                "x": 1.0,
                 "y": 3.0
-            },
-            "UnlockCount": 2,
-            "dir": 1
-        },
-        {
-            "grid": {
-                "x": 2.0,
-                "y": 4.0
             },
             "UnlockCount": 0,
             "dir": 0
         },
         {
             "grid": {
-                "x": 4.0,
+                "x": 3.0,
                 "y": 5.0
             },
-            "UnlockCount": -1,
+            "UnlockCount": 0,
             "dir": 0
+        },
+        {
+            "grid": {
+                "x": 1.0,
+                "y": 1.0
+            },
+            "UnlockCount": 2,
+            "dir": 1
+        },
+        {
+            "grid": {
+                "x": 0.0,
+                "y": 5.0
+            },
+            "UnlockCount": 2,
+            "dir": 1
+        },
+        {
+            "grid": {
+                "x": 4.0,
+                "y": 2.0
+            },
+            "UnlockCount": 0,
+            "dir": 0
+        },
+        {
+            "grid": {
+                "x": 0.0,
+                "y": 4.0
+            },
+            "UnlockCount": 0,
+            "dir": 2
+        },
+        {
+            "grid": {
+                "x": 2.0,
+                "y": 5.0
+            },
+            "UnlockCount": 0,
+            "dir": 3
         },
         {
             "grid": {
                 "x": 5.0,
                 "y": 1.0
-            },
-            "UnlockCount": 2,
-            "dir": 2
-        },
-        {
-            "grid": {
-                "x": 3.0,
-                "y": 1.0
-            },
-            "UnlockCount": 2,
-            "dir": 2
-        },
-        {
-            "grid": {
-                "x": 4.0,
-                "y": 2.0
-            },
-            "UnlockCount": 0,
-            "dir": 1
-        },
-        {
-            "grid": {
-                "x": 0.0,
-                "y": 5.0
-            },
-            "UnlockCount": 0,
-            "dir": 2
-        },
-        {
-            "grid": {
-                "x": 2.0,
-                "y": 1.0
-            },
-            "UnlockCount": 0,
-            "dir": 0
-        },
-        {
-            "grid": {
-                "x": 4.0,
-                "y": 0.0
-            },
-            "UnlockCount": 0,
-            "dir": 2
-        },
-        {
-            "grid": {
-                "x": 0.0,
-                "y": 0.0
-            },
-            "UnlockCount": 0,
-            "dir": 3
-        },
-        {
-            "grid": {
-                "x": 2.0,
-                "y": 2.0
             },
             "UnlockCount": 3,
             "dir": 0
         },
         {
             "grid": {
-                "x": 4.0,
-                "y": 4.0
+                "x": 0.0,
+                "y": 1.0
             },
             "UnlockCount": 4,
-            "dir": 3
+            "dir": 0
+        },
+        {
+            "grid": {
+                "x": 0.0,
+                "y": 3.0
+            },
+            "UnlockCount": 0,
+            "dir": 1
+        },
+        {
+            "grid": {
+                "x": 2.0,
+                "y": 2.0
+            },
+            "UnlockCount": 2,
+            "dir": 2
+        },
+        {
+            "grid": {
+                "x": 3.0,
+                "y": 2.0
+            },
+            "UnlockCount": 0,
+            "dir": 2
         },
         {
             "grid": {
                 "x": 4.0,
-                "y": 1.0
+                "y": 0.0
             },
             "UnlockCount": 0,
-            "dir": 3
+            "dir": 2
+        },
+        {
+            "grid": {
+                "x": 3.0,
+                "y": 0.0
+            },
+            "UnlockCount": 0,
+            "dir": 2
         },
         {
             "grid": {
@@ -169,15 +145,7 @@
                 "y": 2.0
             },
             "UnlockCount": 0,
-            "dir": 0
-        },
-        {
-            "grid": {
-                "x": 1.0,
-                "y": 3.0
-            },
-            "UnlockCount": 0,
-            "dir": 0
+            "dir": 1
         },
         {
             "grid": {
@@ -190,22 +158,6 @@
         {
             "grid": {
                 "x": 2.0,
-                "y": 5.0
-            },
-            "UnlockCount": 0,
-            "dir": 0
-        },
-        {
-            "grid": {
-                "x": 3.0,
-                "y": 2.0
-            },
-            "UnlockCount": 0,
-            "dir": 3
-        },
-        {
-            "grid": {
-                "x": 3.0,
                 "y": 0.0
             },
             "UnlockCount": 0,
@@ -213,45 +165,45 @@
         },
         {
             "grid": {
-                "x": 1.0,
-                "y": 4.0
+                "x": 2.0,
+                "y": 1.0
             },
-            "UnlockCount": 1,
-            "dir": 1
+            "UnlockCount": 0,
+            "dir": 3
         },
         {
             "grid": {
-                "x": 5.0,
-                "y": 4.0
+                "x": 4.0,
+                "y": 5.0
             },
-            "UnlockCount": 0,
+            "UnlockCount": 3,
             "dir": 0
         },
         {
             "grid": {
-                "x": 3.0,
-                "y": 5.0
+                "x": 5.0,
+                "y": 3.0
             },
-            "UnlockCount": 0,
-            "dir": 2
+            "UnlockCount": 2,
+            "dir": 0
         }
     ],
     "sawBlades": [
         {
             "grid": {
-                "x": 4.0,
-                "y": 3.0
-            }
-        },
-        {
-            "grid": {
                 "x": 5.0,
                 "y": 5.0
             }
         },
         {
             "grid": {
-                "x": 1.0,
+                "x": 4.0,
+                "y": 4.0
+            }
+        },
+        {
+            "grid": {
+                "x": 3.0,
                 "y": 1.0
             }
         }
