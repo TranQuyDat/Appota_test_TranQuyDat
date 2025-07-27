@@ -10,7 +10,7 @@ public class LevelData
     public int Width;
     public int Height;
     public BlockData[] blocks;
-    public SawBladelData[] sawBlades;
+    public SawBladeData[] sawBlades;
     public int moveCount;
 
     public string ToJson()
@@ -30,18 +30,17 @@ public class LevelData
         moveCount = data.moveCount;
     }
 }
-public enum BlockDir { up, right, left, down }
+public enum BlockDir { up = 0, right = 1, left = 2, down = 3 }
 [Serializable]
 public class BlockData
 {
     public Vector2 grid;
-    public Color color;
+    public int UnlockCount = 0;
     public BlockDir dir;
 }
 
 [Serializable]
-public class SawBladelData
+public class SawBladeData
 {
     public Vector2 grid;
-    public Color color = Color.gray;
 }
